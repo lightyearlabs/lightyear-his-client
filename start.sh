@@ -1,6 +1,5 @@
 git reset --hard
 git pull origin main
-systemctl start docker
 
 FILE=.env
 if [ ! -f "$FILE" ]; then
