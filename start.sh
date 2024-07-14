@@ -1,3 +1,6 @@
+git reset --hard
+git pull origin main
+
 FILE=.env
 if [ ! -f "$FILE" ]; then
   echo "$FILE does not exist."
