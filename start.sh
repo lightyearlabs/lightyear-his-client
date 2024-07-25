@@ -9,10 +9,10 @@ fi
 
 . .env
 docker pull lightyearlabs/lightyear-his:$IMAGE_TAG
-docker volume create worklist-vol
+docker volume create dicom-vol
 docker run -it \
   -p 3000:3000 \
   -p 4000:4000 \
   --env-file=.env \
-  --mount source=worklist-vol,target=/usr/src/app/packages/dicomClient/worklists \
+  --mount source=dicom-vol,target=/home/dicomVol \
   lightyearlabs/lightyear-his:$IMAGE_TAG
