@@ -20,6 +20,7 @@ services:
       - dcm:/home/dcmVol
   uploader:
     image: lightyearlabs/lightyear-his:uploader-${IMAGE_TAG}
+    env_file: ".env"
     volumes:
       - dcm:/home/dcmVol
     depends_on:
