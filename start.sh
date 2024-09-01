@@ -13,4 +13,4 @@ source .env
 docker compose down
 docker compose pull
 docker compose build
-docker compose --timestamps up
+docker compose up --timestamps
