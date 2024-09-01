@@ -1,0 +1,29 @@
+services:
+  cron:
+    image: lightyearlabs/lightyear-his:${IMAGE_TAG}-cron
+    env_file: ".env"
+    volumes:
+      - dicomvol:/home/dicomVol
+  worklist:
+    image: lightyearlabs/lightyear-his:${IMAGE_TAG}-worklist
+    ports:
+      - "3000:3000"
+    volumes:
+      - dicomvol:/home/dicomVol
+    depends_on:
+      - cron
+  store:
+    image: lightyearlabs/lightyear-his:${IMAGE_TAG}-store
+    ports:
+      - "4000:4000"
+    volumes:
+      - dicomvol:/home/dicomVol
+  uploader:
+    image: lightyearlabs/lightyear-his:${IMAGE_TAG}-uploader
+    volumes:
+      - dicomvol:/home/dicomVol
+    depends_on:
+      - store
+
+volumes:
+  dicomvol:
