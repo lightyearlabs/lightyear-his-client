@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git reset --hard
-git pull origin main
+git pull
 
 FILE=.env
 if [ ! -f "$FILE" ]; then
