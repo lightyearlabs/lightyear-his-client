@@ -10,5 +10,6 @@ if [ ! -f "$FILE" ]; then
 fi
 
 source .env
+docker compose down
 docker compose build
 docker compose up
