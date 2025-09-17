@@ -1,13 +1,18 @@
 #!/bin/bash
 
-open -a Docker
+# Start OrbStack if not running
+if ! pgrep -x "OrbStack" >/dev/null; then
+  echo "Starting OrbStack..."
+  open -a OrbStack
+fi
 
-echo "Waiting for Docker to start..."
-while ! docker system info >/dev/null 2>&1; do
-    sleep 1
+# Wait until OrbStack is ready
+echo "Waiting for OrbStack to be ready..."
+until docker info >/dev/null 2>&1; do
+  sleep 2
 done
 
-echo "Docker is ready, running script..."
+echo "OrbStack is ready"
 
 git reset --hard
 git pull
